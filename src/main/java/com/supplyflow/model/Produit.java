@@ -1,22 +1,22 @@
 package com.supplyflow.model;
 
-public class Produits {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jdk.jfr.Enabled;
+
+@Entity
+public class Produit {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nom;
     private String categorie;
     private double prix ;
     private int quantite;
 
-    public Produits() {
-    }
 
-    public Produits(int id, String nom, String categorie, double prix, int quantite) {
-        this.id = id;
-        this.nom = nom;
-        this.categorie = categorie;
-        this.prix = prix;
-        this.quantite = quantite;
-    }
 
     public int getId() {
         return id;
