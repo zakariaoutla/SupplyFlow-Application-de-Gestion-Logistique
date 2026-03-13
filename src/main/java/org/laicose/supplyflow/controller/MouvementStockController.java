@@ -1,4 +1,4 @@
-package com.supplyflow.controller;
+package org.laicose.supplyflow.controller;
 
 public class MouvementStockController {
 }

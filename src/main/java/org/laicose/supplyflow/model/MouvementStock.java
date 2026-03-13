@@ -1,4 +1,4 @@
-package com.supplyflow.model;
+package org.laicose.supplyflow.model;
 
 
 import jakarta.persistence.*;

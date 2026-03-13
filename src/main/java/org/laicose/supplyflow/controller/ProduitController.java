@@ -1,8 +1,8 @@
-package com.supplyflow.controller;
+package org.laicose.supplyflow.controller;
 
 
-import com.supplyflow.model.Produit;
-import com.supplyflow.service.ProduitService;
+import org.laicose.supplyflow.model.Produit;
+import org.laicose.supplyflow.service.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

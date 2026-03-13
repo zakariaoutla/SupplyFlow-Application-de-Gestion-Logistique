@@ -1,8 +1,8 @@
-package com.supplyflow.service;
+package org.laicose.supplyflow.service;
 
 
-import com.supplyflow.model.Produit;
-import com.supplyflow.repository.ProduitRepository;
+import org.laicose.supplyflow.model.Produit;
+import org.laicose.supplyflow.repository.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
