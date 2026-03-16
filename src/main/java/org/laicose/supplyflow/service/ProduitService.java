@@ -1,7 +1,9 @@
 package org.laicose.supplyflow.service;
 
 
+import jakarta.transaction.Transactional;
 import org.laicose.supplyflow.model.Produit;
+import org.laicose.supplyflow.repository.MouvementStockRepository;
 import org.laicose.supplyflow.repository.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,9 @@ import java.util.List;
 public class ProduitService {
     @Autowired
     private ProduitRepository produitRepository;
+
+    @Autowired
+    private MouvementStockRepository mouvementStockRepository;
 
     public List<Produit> getAllProduits(){
         return produitRepository.findAll();
@@ -38,7 +43,10 @@ public class ProduitService {
 
     }
 
+
+    @Transactional
     public void delete(int id){
+        mouvementStockRepository.deleteByProduitId(id);
         produitRepository.deleteById(id);
     }
 }

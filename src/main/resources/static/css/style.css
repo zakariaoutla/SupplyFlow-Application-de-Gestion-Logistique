@@ -1,0 +1,158 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial;
+}
+body{
+    background-color: #0A1628;
+
+}
+
+
+.bg-slider{
+    background-color: #0D1B2E;
+    height: 100vh;
+    width: 30%;
+    box-shadow:0 5px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+
+.logo{
+    color: white;
+    text-align: center;
+    padding-top: 40px;
+}
+.listSlider{
+    color: white;
+    display: grid;
+    gap: 40px;
+    list-style: none;
+    padding: 0;
+    padding-top: 50px;
+    padding-left: 20px;
+}
+.active{
+    background-color: #223855;
+    padding: 15px;
+    border-bottom-left-radius:10px ;
+    border-top-left-radius: 10px;
+}
+.listSlider li{
+    padding: 15px;
+}
+.listSlider li a{
+    text-decoration: none;
+    color: white;
+}
+.bodyReq{
+    display: flex;
+    width: 100%;
+}
+
+.container{
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 100%;
+
+}
+
+.container h1{
+    color: white;
+    font-size: 35px;
+    letter-spacing: 5px;
+}
+.container p{
+    color: #acaaaa;
+}
+
+.btnAddProduct{
+    margin-top: 50px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #012b63;
+}
+
+.btnAddProduct a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+th {
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 800;
+    font-size: 15px;
+    color:white;
+    border-bottom:0.5px solid white ;
+    border-top:0.5px solid white ;
+    border-top-left-radius: 70px;
+}
+
+td{
+    color: white;
+    padding: 10px 14px;
+    border-bottom:0.5px solid white ;
+}
+
+.colStr{
+    border-left: 0.5px solid white;
+}
+.colFin{
+    border-right: 0.5px solid white;
+}
+
+.formAddProduit{
+    margin-top: 90px;
+}
+
+.formAddProduit label{
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+}
+.formAddProduit input{
+    width: 90%;
+    padding: 20px;
+    border: none;
+    background-color: #0D1B2E;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: white;
+}
+.btnSave{
+    padding: 10px;
+    border: none;
+    font-size: 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: #012b63;
+}
+.titleMov{
+    margin-top: 20px;
+    padding: 15px;
+    width: 94%;
+    background-color: #012b63;
+    color: white;
+    border: none;
+    margin-bottom: 30px;
+}
+.typeC{
+    margin-top: 20px;
+    padding: 15px;
+    width: 94%;
+    background-color: #012b63;
+    color: white;
+    border: none;
+    margin-bottom: 30px;
+}

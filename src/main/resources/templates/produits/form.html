@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Produits</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="bodyReq">
+    <div class="bg-slider">
+        <h1 class="logo" th:href="@{produits}">SupplyFlow</h1>
+        <ul class="listSlider">
+            <li class="active"><a th:href="@{../produits}">Produits</a></li>
+            <li th:href="@{../fournisseur}"><a>Fournisseur</a></li>
+            <li><a th:href="@{../mouvementstock}">Mouvemen de Stock</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>Ajouter un nouveau produit</h1>
+
+        <form class="formAddProduit" action="/produits/save" method="post">
+            <input type="hidden" name="id" th:value="${produit.id}"/>
+
+            <label>Nom du produit</label>
+            <input type="text" name="nom" th:value="${produit.nom}"   placeholder="entree nom du produit">
+            <br>
+            <label>Catégorie</label>
+            <input type="text" name="categorie" th:value="${produit.categorie}"  placeholder="entree Catégorie">
+            <br>
+            <label>Prix</label>
+            <br>
+            <input type="number" name="prix" th:value="${produit.prix}"  placeholder="entree Prix">
+            <br>
+            <label>Quantité</label>
+            <input type="number" name="quantite" th:value="${produit.quantite}"  placeholder="entree Quantité">
+            <br>
+            <button class="btnSave" type="submit">Save</button>
+        </form>
+
+    </div>
+</div>
+
+
+</body>
+</html>

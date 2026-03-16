@@ -24,40 +24,24 @@ public class MouvementStockService {
         return mouvementStockRepository.findAll();
     }
 
-    public MouvementStock entree(int id, int quantite){
-        Produit produit = produitRepository.findById(id).orElse(null);
-        if (produit == null) return null;
+    public MouvementStock save(MouvementStock mouvementStock) {
+        if (mouvementStock.getProduit() != null && mouvementStock.getProduit().getId() != 0) {
+            Produit produit = produitRepository.findById(mouvementStock.getProduit().getId()).orElse(null);
+            mouvementStock.setProduit(produit);
 
-        produit.setQuantite(produit.getQuantite()+ quantite);
-        produitRepository.save(produit);
-
-        MouvementStock mouvement = new MouvementStock();
-        mouvement.setProduit(produit);
-        mouvement.setQuantite(quantite);
-        mouvement.setType("Entree");
-        mouvement.setDate(LocalDate.now());
-
-        return mouvementStockRepository.save(mouvement);
-
-
-    }
-
-    public MouvementStock sortie(int id, int quantite){
-        Produit produit = produitRepository.findById(id).orElse(null);
-        if (produit == null) return null;
-        if (produit.getQuantite()< quantite){
-            return null;
+            if (mouvementStock.getId() == 0) {
+                if ("ENTREE".equals(mouvementStock.getType())) {
+                    produit.setQuantite(produit.getQuantite() + mouvementStock.getQuantite());
+                } else if ("SORTIE".equals(mouvementStock.getType())) {
+                    produit.setQuantite(produit.getQuantite() - mouvementStock.getQuantite());
+                }
+                produitRepository.save(produit);
+            }
         }
 
-        produit.setQuantite(produit.getQuantite() - quantite);
-        produitRepository.save(produit);
-
-        MouvementStock mouvementStock = new MouvementStock();
-
-        mouvementStock.setProduit(produit);
-        mouvementStock.setQuantite(quantite);
-        mouvementStock.setType("Sortie");
-        mouvementStock.setDate(LocalDate.now());
+        if (mouvementStock.getDate() == null) {
+            mouvementStock.setDate(LocalDate.now());
+        }
 
         return mouvementStockRepository.save(mouvementStock);
     }

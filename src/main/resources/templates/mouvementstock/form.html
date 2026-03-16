@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mouvement de Stock</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="bodyReq">
+    <div class="bg-slider">
+        <h1 class="logo" th:href="@{mouvementstock}">SupplyFlow</h1>
+        <ul class="listSlider">
+            <li  th:href="@{../produits}"><a>Produits</a></li>
+            <li  th:href="@{../fournisseur}"><a>Fournisseur</a></li>
+            <li class="active" th:href="@{../mouvementstock}"><a>Mouvemen de Stock</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>Ajouter un nouveau Mouvement de Stock</h1>
+
+
+        <form class="formAddProduit" action="/mouvementstock/save" method="post">
+            <input type="hidden" name="id" th:value="${mouvementstock.id}"/>
+
+            <label>Nom du Produit</label>
+            <br>
+            <select name="produit.id" class="titleMov">
+                <option value="">-- Choisir un produit --</option>
+                <option th:each="produit : ${produits}"
+                        th:value="${produit.id}"
+                        th:text="${produit.nom}"
+                        th:selected="${mouvementstock.produit != null and mouvementstock.produit.id == produit.id}">
+                </option>
+            </select>
+            <br>
+
+            <label>Quantite</label>
+            <input type="number" name="quantite" th:value="${mouvementstock.quantite}" placeholder="entree quantite">
+            <br>
+
+            <label>Type</label>
+            <br>
+            <select name="type" class="typeC">
+                <option value="ENTREE" th:selected="${mouvementstock.type == 'ENTREE'}">Entrée</option>
+                <option value="SORTIE" th:selected="${mouvementstock.type == 'SORTIE'}">Sortie</option>
+            </select>
+            <br>
+
+            <button class="btnSave" type="submit">Save</button>
+        </form>
+
+    </div>
+</div>
+
+
+</body>
+</html>

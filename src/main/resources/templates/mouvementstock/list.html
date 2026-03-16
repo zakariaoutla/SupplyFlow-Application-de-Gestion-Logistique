@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mouvement de stock</title>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<div class="bodyReq">
+    <div class="bg-slider">
+        <h1 class="logo" th:href="@{mouvementstock}">SupplyFlow</h1>
+        <ul class="listSlider">
+            <li><a th:href="@{../produits}">Produits</a></li>
+            <li><a th:href="@{../fournisseur}">Fournisseur</a></li>
+            <li class="active" th:href="@{../mouvementstock}"><a>Mouvemen de Stock</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>Mouvemen de Stock</h1>
+        <p>Gérez et suivez vos niveaux de Mouvemen de Stock.</p>
+        <button class="btnAddProduct"><a href="/mouvementstock/new">Ajouter un Mouvemen de Stock</a></button>
+
+        <table>
+            <thead>
+            <tr>
+                <th class="colStr">ID</th>
+                <th>Nom du produit</th>
+                <th>quantite</th>
+                <th>type</th>
+                <th class="colFin">date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="stock : ${mouvementstock}">
+                <td class="colStr" th:text="${stock.id}"></td>
+                <td th:text="${stock.produit.nom}"></td>
+                <td th:text="${stock.quantite}"></td>
+                <td th:text="${stock.type}"></td>
+                <td class="colFin" th:text="${stock.date}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>

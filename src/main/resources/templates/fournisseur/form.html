@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>fournisseur</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="bodyReq">
+    <div class="bg-slider">
+        <h1 class="logo" th:href="@{fournisseur}">SupplyFlow</h1>
+        <ul class="listSlider">
+            <li  th:href="@{../produits}"><a>Produits</a></li>
+            <li class="active" th:href="@{../fournisseur}"><a>Fournisseur</a></li>
+            <li><a th:href="@{../mouvementstock}">Mouvemen de Stock</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>Ajouter un nouveau fournisseur</h1>
+
+
+        <form class="formAddProduit" action="/fournisseur/save" method="post">
+            <input type="hidden" name="id" th:value="${fournisseur.id}"/>
+            <label>Nom du fournisseur</label>
+            <input type="text" name="nom" th:value="${fournisseur.nom}"   placeholder="entree nom du fournisseur">
+            <br>
+            <label>ville</label>
+            <br>
+            <input type="text" name="ville" th:value="${fournisseur.ville}"  placeholder="entree ville">
+            <br>
+            <label>telephone</label>
+            <br>
+            <input type="number" name="telephone" th:value="${fournisseur.telephone}"  placeholder="entree telephone">
+            <br>
+            <button class="btnSave" type="submit">Save</button>
+        </form>
+
+    </div>
+</div>
+
+
+</body>
+</html>

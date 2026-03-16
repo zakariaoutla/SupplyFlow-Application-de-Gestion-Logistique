@@ -1,14 +1,17 @@
 package org.laicose.supplyflow.controller;
 
 
+import org.aspectj.apache.bcel.classfile.Module;
 import org.laicose.supplyflow.model.Fournisseur;
 import org.laicose.supplyflow.service.FournisseurService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/fournisseur")
 public class FournisseurController {
 
@@ -17,29 +20,40 @@ public class FournisseurController {
 
 
     @GetMapping
-    public List<Fournisseur> getAll(){
-        return fournisseurService.getAllFournisseurs();
+    public String getAll(Model model){
+        model.addAttribute("fournisseurs", fournisseurService.getAllFournisseurs());
+        return "fournisseur/list";
     }
 
     @GetMapping("/{id}")
-    public Fournisseur getById(@PathVariable int id){
-        return fournisseurService.getById(id);
+    public String getById(@PathVariable int id, Model model){
+        model.addAttribute("fournisseurs", fournisseurService.getById(id));
+        return "fournisseurs/detail";
 
     }
 
-    @PostMapping
-    public Fournisseur save(@RequestBody Fournisseur fournisseur){
-        return fournisseurService.save(fournisseur);
+    @GetMapping("/new")
+    public String showForm(Model model){
+        model.addAttribute("fournisseur", new Fournisseur());
+        return "fournisseur/form";
     }
 
-    @PutMapping("/{id}")
-    public Fournisseur update(@PathVariable int id, @RequestBody Fournisseur fournisseur){
-        return fournisseurService.update(id, fournisseur);
+    @PostMapping("/save")
+    public String save(@ModelAttribute Fournisseur fournisseur){
+        fournisseurService.save(fournisseur);
+        return "redirect:/fournisseur";
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id){
+    @GetMapping("/edit/{id}")
+    public String showUpdate(@PathVariable int id, Model model){
+        model.addAttribute("fournisseur", fournisseurService.getById(id));
+        return "fournisseur/form";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable int id){
         fournisseurService.delete(id);
+        return "redirect:/fournisseur";
     }
 
 }

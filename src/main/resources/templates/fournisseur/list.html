@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Produits</title>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<div class="bodyReq">
+    <div class="bg-slider">
+        <h1 class="logo" th:href="@{fournisseur}">SupplyFlow</h1>
+        <ul class="listSlider">
+            <li><a th:href="@{../produits}">Produits</a></li>
+            <li class="active"><a th:href="@{../fournisseur}">Fournisseur</a></li>
+            <li><a th:href="@{../mouvementstock}">Mouvemen de Stock</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>Fournisseur</h1>
+        <p>Gérez et suivez vos niveaux de fournisseur.</p>
+        <button class="btnAddProduct"><a href="/fournisseur/new">Ajouter un fournisseur</a></button>
+
+        <table>
+            <thead>
+            <tr>
+                <th class="colStr">ID</th>
+                <th>Nom du fournisseur</th>
+                <th>ville</th>
+                <th>telephone</th>
+                <th class="colFin">action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="fournisseur : ${fournisseurs}">
+                <td class="colStr" th:text="${fournisseur.id}"></td>
+                <td th:text="${fournisseur.nom}"></td>
+                <td th:text="${fournisseur.ville}"></td>
+                <td th:text="${fournisseur.telephone}"></td>
+                <td class="colFin">
+                    <a th:href="@{/fournisseur/edit/{id}(id=${fournisseur.id})}"><img th:src="@{/css/images/compose.png}" width="20px"></a>
+                    <a th:href="@{/fournisseur/delete/{id}(id=${fournisseur.id})}" ><img th:src="@{/css/images/delete.png}" width="20px"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>
